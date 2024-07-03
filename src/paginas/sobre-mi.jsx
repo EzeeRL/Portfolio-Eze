@@ -23,7 +23,7 @@ const ProgressCard = ({ technology, percentage, onClose }) => {
         <div className="progress" ref={progressRef}></div>
       </div>
       <p className="knowledge-text">
-        {percentage}% <span> De conocimiento</span>
+        {percentage}% <span> De manejo</span>
       </p>
     </div>
   );
