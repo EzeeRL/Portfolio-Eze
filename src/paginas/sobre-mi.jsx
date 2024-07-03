@@ -1,10 +1,52 @@
-import React from "react";
+import React, { useEffect, useState, useRef } from "react";
 
 import "./sobre-mi.css";
 
 import Aside from "../components/aside";
 
+const ProgressCard = ({ technology, percentage, onClose }) => {
+  const progressRef = useRef(null);
+
+  useEffect(() => {
+    if (progressRef.current) {
+      progressRef.current.style.width = `${percentage}%`;
+    }
+  }, [percentage]);
+
+  return (
+    <div className="card">
+      <button className="close-button" onClick={onClose}>
+        X
+      </button>
+      <h2>{technology}</h2>
+      <div className="progress-bar">
+        <div className="progress" ref={progressRef}></div>
+      </div>
+      <p className="knowledge-text">
+        {percentage}% <span> De conocimiento</span>
+      </p>
+    </div>
+  );
+};
+
 function SobreMi() {
+  const [selectedTechnology, setSelectedTechnology] = useState(null);
+
+  const technologies = [
+    { name: "HTML", percentage: 98 },
+    { name: "CSS", percentage: 95 },
+    { name: "JS", percentage: 80 },
+    { name: "React", percentage: 75 },
+  ];
+
+  const handleTechnologyClick = (tech) => {
+    setSelectedTechnology(tech);
+  };
+
+  const handleCloseCard = () => {
+    setSelectedTechnology(null);
+  };
+
   return (
     <>
       <Aside></Aside>
@@ -32,20 +74,35 @@ function SobreMi() {
           <h1>Educación</h1>
           <hr className="hr-titulos" />
           <p className="info-txt">
-            Hice y terminé el colegio secundario en la Escuela Media 15 de Quilmes con orientación en Ciencias Naturales, en la cual obtuve el segundo mejor promedio.
-			Comencé a estudiar Desarrollo Web en 2021 de manera autodidacta y continuo haciendolo hasta el dia de hoy. <br />
-			En Julio de 2024 ingresé a un curso online de Desarrollo Web Full Stack en SoyHenry en el cual me mantengo actualmente.
+            Hice y terminé el colegio secundario en la Escuela Media 15 de
+            Quilmes con orientación en Ciencias Naturales, en la cual obtuve el
+            segundo mejor promedio. Comencé a estudiar Desarrollo Web en 2021 de
+            manera autodidacta y continuo haciendolo hasta el dia de hoy. <br />
+            En Julio de 2024 ingresé a un curso online de Desarrollo Web Full
+            Stack en SoyHenry en el cual me mantengo actualmente.
           </p>
           <br />
 
           <h1>Tecnologías</h1>
           <hr className="hr-titulos" />
-          <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellat
-            dicta nisi possimus tenetur accusamus alias nemo, asperiores nostrum
-            vitae, soluta odit, modi ut? Culpa nam nihil sit, deleniti ullam
-            dicta.
-          </p>
+          <div className="container-tecnologias">
+            {technologies.map((tech) => (
+              <img
+                key={tech.name}
+                src={`public/iconos-tecnologias/${tech.name}.png`}
+                alt={tech.name}
+                className="imgs-tecnologias"
+                onClick={() => handleTechnologyClick(tech)}
+              />
+            ))}
+          </div>
+          {selectedTechnology && (
+            <ProgressCard
+              technology={selectedTechnology.name}
+              percentage={selectedTechnology.percentage}
+              onClose={handleCloseCard}
+            />
+          )}
         </div>
       </main>
     </>

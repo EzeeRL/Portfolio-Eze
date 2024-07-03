@@ -55,3 +55,85 @@ nav {
 	border-radius: 10px;
 	margin-left: 0px;
 }
+
+.container-tecnologias {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	position: relative;
+	margin-top: 50px;
+}
+
+.imgs-tecnologias {
+	width: 80px;
+	height: 80px;
+	cursor: pointer;
+	transition: 0.3s;
+}
+
+.imgs-tecnologias:hover {
+	scale: 1.1;
+}
+
+
+/* TARJETAS DE PROGRESO */
+
+.card {
+    width: 200px;
+	padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #2B2B2C;
+    border-radius: 10px;
+    text-align: center;
+    margin: 50px auto;
+	transition: 0.3s;
+}
+
+.card.closed {
+	opacity: 0;
+	pointer-events: none;
+  }
+
+.progress-bar {
+    background: #e0e0e0;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 20px 0;
+    height: 5px;
+    position: relative;
+}
+
+.progress {
+    background: #614caf;
+	border-radius: 10px;
+    height: 100%;
+    width: 0;
+    transition: width 1s ease-in-out;
+}
+
+.knowledge-text {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.knowledge-text span {
+    margin-left: 5px;
+}
+
+.container-card {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.close-button {
+	font-weight: bold;
+	position: relative;
+	top: -10px;
+	left: 50%;
+	background: #e0e0e0;
+	border: none;
+	border-radius: 27px;
+	cursor: pointer;
+}
