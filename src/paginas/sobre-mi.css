@@ -41,7 +41,7 @@ nav {
 	display: flex;
 	justify-content: start;
 	text-align: start;
-	background-color: red;
+	/* background-color: red; */
 }
 
 .hr-titulos {
